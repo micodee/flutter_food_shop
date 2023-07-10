@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_shop/home/food_page_body.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
 import 'package:flutter_food_shop/widgets/big_text.dart';
 import 'package:flutter_food_shop/widgets/small_text.dart';
@@ -26,7 +27,12 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   Column(
                     children: [
                       BigText(text: "Indonesia", color: AppColors.mainColor,),
-                      SmallText(text: "Jakarta", color: Colors.black54,)
+                      Row(
+                        children: [
+                          SmallText(text: "Jakarta", color: Colors.black54,),
+                          Icon(Icons.arrow_drop_down_rounded)
+                        ],
+                      )
                     ],
                   ),
                   Center(
@@ -44,6 +50,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          FoodPageBody()
         ],
       ),
     );
