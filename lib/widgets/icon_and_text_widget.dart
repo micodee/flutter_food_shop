@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_shop/widgets/small_text.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class IconAndTextWidget extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final Color iconColor;
+  const IconAndTextWidget(
+      {super.key,
+      required this.icon,
+      required this.text,
+      required this.iconColor});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Row(
+      children: [
+        Icon(icon, color: iconColor,),
+        SizedBox(width: 5,),
+        SmallText(text: text,),
+      ],
+    );
   }
 }
