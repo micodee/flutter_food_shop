@@ -18,7 +18,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currPageValue = 0.0;
   double _scaleFactor = 0.8;
-  double _height = Dimensions.pageViewContainer;
+  double _height = Dimensions.pageViewContainer_240;
 
   @override
   void initState() {
@@ -40,9 +40,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // slider section
         Container(
           // color: Colors.redAccent,
-          height: 320,
+          height: Dimensions.pageView_320,
           child: PageView.builder(
               controller: pageController,
               itemCount: 5,
@@ -50,6 +51,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 return _buildPageItem(position);
               }),
         ),
+        // dots
         new DotsIndicator(
           dotsCount: 5,
           position: _currPageValue,
@@ -61,6 +63,46 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(5.0)),
           ),
         ),
+        // popular text
+        SizedBox(height: Dimensions.height_30,),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width_30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(width: Dimensions.width_10,),
+              Container(
+                margin: EdgeInsets.only(bottom: Dimensions.height_3),
+                child: BigText(text: ".", color: Colors.black26,),
+              ),
+              SizedBox(width: Dimensions.width_10,),
+              Container(
+                margin: EdgeInsets.only(bottom: Dimensions.height_6),
+                child: SmallText(text: "Food pairing", color: Colors.black26,),
+              ),
+            ],
+          ),
+        ),
+        // list of food and images
+        ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(left: Dimensions.width_20, right: Dimensions.width_20),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius30),
+                      color: Colors.white38,
+                      image: DecorationImage(image: AssetImage("assets/image/food1.jpg"))
+                    ),
+                  )
+                ],
+              ),
+            );
+        })
       ],
     );
   }
@@ -94,9 +136,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(children: [
         Container(
           height: _height,
-          margin: EdgeInsets.only(left: 10, right: 10),
+          margin: EdgeInsets.only(left: Dimensions.width_10, right: Dimensions.width_10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimensions.radius30),
               color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
               image: DecorationImage(
                   fit: BoxFit.cover,
@@ -105,10 +147,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: Dimensions.pageViewTextContainer,
-            margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+            height: Dimensions.pageViewTextContainer_120,
+            margin: EdgeInsets.only(left: Dimensions.width_30, right: Dimensions.width_30, bottom: Dimensions.height_30),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -119,13 +161,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   BoxShadow(color: Colors.white, offset: Offset(5, 0)),
                 ]),
             child: Container(
-              padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+              padding: EdgeInsets.only(left: Dimensions.width_15, right: Dimensions.width_15, top: Dimensions.height15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BigText(text: "Japan Side"),
                   SizedBox(
-                    height: 10,
+                    height: Dimensions.height10,
                   ),
                   Row(
                     children: [
@@ -134,26 +176,26 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           return Icon(
                             Icons.star,
                             color: AppColors.mainColor,
-                            size: 15,
+                            size: Dimensions.height15,
                           );
                         }),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: Dimensions.width_10,
                       ),
                       SmallText(text: "4.5"),
                       SizedBox(
-                        width: 10,
+                        width: Dimensions.width_10,
                       ),
                       SmallText(text: "1287"),
                       SizedBox(
-                        width: 10,
+                        width: Dimensions.width_10,
                       ),
                       SmallText(text: "comments"),
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: Dimensions.height15,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
