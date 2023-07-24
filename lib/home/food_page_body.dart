@@ -85,7 +85,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         // list of food and images
-        ListView.builder(
+        Container(
+          height: 900,
+          child: ListView.builder(
+          physics: AlwaysScrollableScrollPhysics(),
+          shrinkWrap: true,
           itemCount: 10,
           itemBuilder: (context, index) {
             return Container(
@@ -93,6 +97,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               child: Row(
                 children: [
                   Container(
+                    height: 120,
+                    width: 120,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radius30),
                       color: Colors.white38,
@@ -102,7 +108,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 ],
               ),
             );
-        })
+          }),
+        )
       ],
     );
   }
