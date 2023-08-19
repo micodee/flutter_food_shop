@@ -33,4 +33,8 @@ class Dimensions {
 
   // dynamic icon
   static double iconSize_25 = screenHeight/27.32;
+
+  // list view size
+  static double imgSize_120 = screenWidth/3.42;
+  static double textConSize_100 = screenWidth/4.11;
 }
