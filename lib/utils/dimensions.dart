@@ -25,7 +25,9 @@ class Dimensions {
   static double width_30 = screenWidth/13.7;
   static double width_45 = screenWidth/9.13;
   
+  // font size
   static double font20 = screenHeight/34.15;
+  static double font26 = screenHeight/26.26;
 
   // dynamic radius
   static double radius30 = screenHeight/22.76;
@@ -33,8 +35,15 @@ class Dimensions {
 
   // dynamic icon
   static double iconSize_25 = screenHeight/27.32;
+  static double iconSize_16 = screenHeight/42.68;
 
   // list view size
   static double imgSize_120 = screenWidth/3.42;
   static double textConSize_100 = screenWidth/4.11;
+
+  // pages popular_food_detail
+  static double imgPopularFood_350 = screenWidth/1.37;
+
+  // bottom height
+  static double bottomHeightBar_120 = screenHeight/5.69;
 }
