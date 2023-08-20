@@ -3,6 +3,7 @@ import 'package:flutter_food_shop/utils/colors.dart';
 import 'package:flutter_food_shop/utils/dimensions.dart';
 import 'package:flutter_food_shop/widgets/app_column.dart';
 import 'package:flutter_food_shop/widgets/app_icon.dart';
+import 'package:flutter_food_shop/widgets/expandable_text_widget.dart';
 
 import '../../widgets/big_text.dart';
 
@@ -15,6 +16,7 @@ class PopularFoodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // background image
           Positioned(
               left: 0,
               right: 0,
@@ -26,6 +28,7 @@ class PopularFoodDetail extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: AssetImage("assets/image/music1.png"))),
               )),
+          // icon widget
           Positioned(
               top: Dimensions.height_45,
               left: Dimensions.width_20,
@@ -37,6 +40,7 @@ class PopularFoodDetail extends StatelessWidget {
                   AppIcon(icon: Icons.shopping_cart_outlined)
                 ],
               )),
+          // introduction of food
           Positioned(
               left: 0,
               right: 0,
@@ -61,9 +65,19 @@ class PopularFoodDetail extends StatelessWidget {
                       SizedBox(
                         height: Dimensions.height20,
                       ),
-                      BigText(text: "Introduce")
+                      BigText(text: "Introduce"),
+                      SizedBox(
+                        height: Dimensions.height_6,
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: ExpandableTextWidget(
+                              textExpandable:
+                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
+                        ),
+                      )
                     ],
-                  )))
+                  ))),
         ],
       ),
       bottomNavigationBar: Container(
