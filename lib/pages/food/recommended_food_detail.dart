@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_shop/data/controllers/recommended_product_controller.dart';
 import 'package:flutter_food_shop/routes/route_helper.dart';
+import 'package:flutter_food_shop/utils/app_constant.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
 import 'package:flutter_food_shop/utils/dimensions.dart';
 import 'package:flutter_food_shop/widgets/app_icon.dart';
@@ -8,10 +10,12 @@ import 'package:flutter_food_shop/widgets/expandable_text_widget.dart';
 import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({super.key});
+  final int pageId;
+  const RecommendedFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -37,7 +41,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 // margin: EdgeInsets.only(left: Dimensions.width_20, right: Dimensions.width_20),
                 child: Center(
                     child: BigText(
-                  text: "Sliver App Bar",
+                  text: product.name!,
                   size: Dimensions.font26,
                 )),
                 width: double.maxFinite,
@@ -51,10 +55,10 @@ class RecommendedFoodDetail extends StatelessWidget {
             ),
             pinned: true,
             backgroundColor: AppColors.yellowColor,
-            expandedHeight: 200,
+            expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/music1.png",
+              background: Image.network(
+                AppConstants.BASE_URL+"/uploads/"+product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -68,7 +72,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     left: Dimensions.width_20, right: Dimensions.width_20),
                 child: ExpandableTextWidget(
                   textExpandable:
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                      product.description!,
                 ),
               )
             ],
@@ -93,7 +97,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     iconColor: Colors.white,
                     backgroundColor: AppColors.mainColor),
                 BigText(
-                  text: "\$12.88 " + " X " + " 0 ",
+                  text: "\$${product.price!} X 0 ",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),

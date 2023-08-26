@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_shop/data/controllers/popular_product_controller.dart';
 import 'package:flutter_food_shop/pages/home/main_food_page.dart';
+import 'package:flutter_food_shop/utils/app_constant.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
 import 'package:flutter_food_shop/utils/dimensions.dart';
 import 'package:flutter_food_shop/widgets/app_column.dart';
@@ -11,14 +12,14 @@ import 'package:get/get.dart';
 import '../../widgets/big_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  int pageId;
-  PopularFoodDetail({super.key, required this.pageId});
+  final int pageId;
+  const PopularFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
     var product = Get.find<PopularProductController>().popularProductList[pageId];
-    print("page is id "+pageId.toString());
-    print("product name is "+product.name.toString());
+    // print("page is id "+pageId.toString());
+    // print("product name is "+product.name.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -33,7 +34,7 @@ class PopularFoodDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("assets/image/music1.png"))),
+                        image: NetworkImage(AppConstants.BASE_URL+"/uploads/"+product.img!))),
               )),
           // icon widget
           Positioned(
@@ -72,7 +73,7 @@ class PopularFoodDetail extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppColumn(
-                        textDynamic: "Japan Side",
+                        textDynamic: product.name!,
                       ),
                       SizedBox(
                         height: Dimensions.height20,
@@ -85,7 +86,7 @@ class PopularFoodDetail extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: ExpandableTextWidget(
                               textExpandable:
-                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
+                                  product.description!),
                         ),
                       )
                     ],
@@ -144,7 +145,7 @@ class PopularFoodDetail extends StatelessWidget {
                   left: Dimensions.width_15,
                   right: Dimensions.width_15),
               child: BigText(
-                text: "\$10 | Add to cart",
+                text: "\$${product.price!} | Add to cart",
                 color: Colors.white,
               ),
               decoration: BoxDecoration(
