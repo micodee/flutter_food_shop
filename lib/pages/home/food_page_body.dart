@@ -229,7 +229,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(children: [
         GestureDetector(
           onTap: (){
-              Get.toNamed(RouteHelper.getPopularFood());
+              Get.toNamed(RouteHelper.getPopularFood(index));
           },
           child: Container(
             height: _height,

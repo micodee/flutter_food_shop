@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_shop/data/controllers/popular_product_controller.dart';
 import 'package:flutter_food_shop/pages/home/main_food_page.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
 import 'package:flutter_food_shop/utils/dimensions.dart';
@@ -10,10 +11,14 @@ import 'package:get/get.dart';
 import '../../widgets/big_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({super.key});
+  int pageId;
+  PopularFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularProductController>().popularProductList[pageId];
+    print("page is id "+pageId.toString());
+    print("product name is "+product.name.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
