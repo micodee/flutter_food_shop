@@ -75,6 +75,9 @@ class PopularProductController extends GetxController{
   void addItem(ProductModel product){
     if(_quantity > 0){
       _cart.addItem(product, quantity);
+      _cart.items.forEach((key, value) { 
+        print("The id is "+value.id.toString()+" The quantity is "+value.quantity.toString());
+      });
     } else {
       Get.snackbar("Add Cart", "You should at least add an Qty item in the cart !",
         backgroundColor: AppColors.mainColor,
