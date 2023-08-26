@@ -18,6 +18,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product = Get.find<PopularProductController>().popularProductList[pageId];
+    Get.find<PopularProductController>().initProduct();
     // print("page is id "+pageId.toString());
     // print("product name is "+product.name.toString());
     return Scaffold(
@@ -93,7 +94,8 @@ class PopularFoodDetail extends StatelessWidget {
                   ))),
         ],
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: GetBuilder<PopularProductController>(builder: (popularProduct){
+        return Container(
         height: Dimensions.bottomHeightBar_120,
         padding: EdgeInsets.only(
             top: Dimensions.height_30,
@@ -120,20 +122,30 @@ class PopularFoodDetail extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.remove,
-                    color: AppColors.signColor,
+                  GestureDetector(
+                    onTap: (){
+                      popularProduct.setQuantity(false);
+                    },
+                    child: Icon(
+                      Icons.remove,
+                      color: AppColors.signColor,
+                    ),
                   ),
                   SizedBox(
                     width: Dimensions.width_10 / 2,
                   ),
-                  BigText(text: "0"),
+                  BigText(text: popularProduct.quantity.toString()),
                   SizedBox(
                     width: Dimensions.width_10 / 2,
                   ),
-                  Icon(
-                    Icons.add,
-                    color: AppColors.signColor,
+                  GestureDetector(
+                    onTap: (){
+                      popularProduct.setQuantity(true);
+                    },
+                    child: Icon(
+                      Icons.add,
+                      color: AppColors.signColor,
+                    ),
                   )
                 ],
               ),
@@ -155,7 +167,8 @@ class PopularFoodDetail extends StatelessWidget {
             )
           ],
         ),
-      ),
+      );
+      },),
     );
   }
 }
