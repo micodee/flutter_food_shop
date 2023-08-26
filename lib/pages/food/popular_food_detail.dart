@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_shop/data/controllers/cart_controller.dart';
 import 'package:flutter_food_shop/data/controllers/popular_product_controller.dart';
 import 'package:flutter_food_shop/pages/home/main_food_page.dart';
 import 'package:flutter_food_shop/utils/app_constant.dart';
@@ -18,7 +19,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product = Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>().initProduct();
+    Get.find<PopularProductController>().initProduct(Get.find<CartController>());
     // print("page is id "+pageId.toString());
     // print("product name is "+product.name.toString());
     return Scaffold(
@@ -156,9 +157,14 @@ class PopularFoodDetail extends StatelessWidget {
                   bottom: Dimensions.height15,
                   left: Dimensions.width_15,
                   right: Dimensions.width_15),
-              child: BigText(
-                text: "\$${product.price!} | Add to cart",
-                color: Colors.white,
+              child: GestureDetector(
+                onTap: (){
+                  popularProduct.addItem(product);
+                },
+                child: BigText(
+                  text: "\$${product.price!} | Add to cart",
+                  color: Colors.white,
+                ),
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius15),
