@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_shop/data/controllers/popular_product_controller.dart';
 import 'package:flutter_food_shop/data/controllers/recommended_product_controller.dart';
-import 'package:flutter_food_shop/pages/cart/cart_page.dart';
-// import 'package:flutter_food_shop/pages/home/main_food_page.dart';
+import 'package:flutter_food_shop/pages/home/main_food_page.dart';
 import 'package:flutter_food_shop/routes/route_helper.dart';
-// import 'package:flutter_food_shop/pages/food/recommended_food_detail.dart';
-// import 'package:flutter_food_shop/pages/food/popular_food_detail.dart';
 import 'package:get/get.dart';
 import 'helper/depedencies.dart' as dep;
 
@@ -31,7 +28,7 @@ class MyApp extends StatelessWidget {
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       //   useMaterial3: true,
       // ),
-      home: CartPage(),
+      home: MainFoodPage(),
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
     );
