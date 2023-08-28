@@ -19,7 +19,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product = Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>().initProduct(Get.find<CartController>());
+    Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
     // print("page is id "+pageId.toString());
     // print("product name is "+product.name.toString());
     return Scaffold(
@@ -135,7 +135,7 @@ class PopularFoodDetail extends StatelessWidget {
                   SizedBox(
                     width: Dimensions.width_10 / 2,
                   ),
-                  BigText(text: popularProduct.quantity.toString()),
+                  BigText(text: popularProduct.inCartItems.toString()),
                   SizedBox(
                     width: Dimensions.width_10 / 2,
                   ),

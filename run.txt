@@ -1,0 +1,6 @@
+https://github.com/flutter/flutter/issues/73109
+This would be a fix when you have control over your image server or cdn.
+What if we dont have access to the server. I think it should be done in flutter?
+Tho 
+flutter run -d chrome --web-renderer html 
+works but not with canvaskit.

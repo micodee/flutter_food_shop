@@ -1,0 +1,9 @@
+https://blog.iqbalmineraltown.com/mengatur-versi-flutter-dengan-fvm/
+git clone https://github.com/leoafarias/fvm.git ~/.fvm
+
+fvm releases
+fvm install 3.0.3
+fvm list
+fvm use 3.0.3
+
+set global run administrator : fvm global 3.0.3
