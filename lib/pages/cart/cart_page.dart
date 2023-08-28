@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_shop/data/controllers/cart_controller.dart';
 import 'package:flutter_food_shop/pages/home/main_food_page.dart';
+import 'package:flutter_food_shop/routes/route_helper.dart';
 import 'package:flutter_food_shop/utils/app_constant.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
 import 'package:flutter_food_shop/utils/dimensions.dart';
@@ -35,7 +36,7 @@ class CartPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: (){
-                      Get.to(() => MainFoodPage());
+                      Get.toNamed(RouteHelper.getInitial());
                     },
                     child: AppIcon(
                       icon: Icons.home_outlined,
@@ -65,8 +66,10 @@ class CartPage extends StatelessWidget {
                     removeTop: true,
                     child:
                         GetBuilder<CartController>(builder: (cartController) {
+                          var _cartList = cartController.getItems;
+
                       return ListView.builder(
-                          itemCount: cartController.getItems.length,
+                          itemCount: _cartList.length,
                           itemBuilder: (_, index) {
                             return Container(
                               height: Dimensions.height20 * 5,
@@ -144,8 +147,7 @@ class CartPage extends StatelessWidget {
                                                         Dimensions.width_10 / 2,
                                                   ),
                                                   BigText(
-                                                      text:
-                                                          "0"), //popularProduct.inCartItems.toString()),
+                                                      text: _cartList[index].quantity.toString()), //popularProduct.inCartItems.toString()),
                                                   SizedBox(
                                                     width:
                                                         Dimensions.width_10 / 2,
