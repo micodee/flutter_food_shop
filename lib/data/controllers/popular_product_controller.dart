@@ -72,7 +72,7 @@ class PopularProductController extends GetxController{
     var exist = false;
     exist = _cart.existInCart(product);
     // get from storage _inCartItems
-    print("exist or not "+exist.toString());
+    // print("exist or not "+exist.toString());
     if(exist){
       _inCartItems = _cart.getQuantity(product);
     }
@@ -80,7 +80,6 @@ class PopularProductController extends GetxController{
   }
 
   void addItem(ProductModel product){
-    if(_quantity > 0){
       _cart.addItem(product, quantity);
 
       _quantity = 0;
@@ -90,11 +89,12 @@ class PopularProductController extends GetxController{
         print("The id is "+value.id.toString()+" The quantity is "+value.quantity.toString());
       });
 
-    } else {
-      Get.snackbar("Add Cart", "You should at least add an Qty item in the cart !",
-        backgroundColor: AppColors.mainColor,
-        colorText: Colors.white,
-      );
-    }
+      update();
   }
+
+  int get totalItems{
+
+    return _cart.totalItems;
+  }
+
 }
