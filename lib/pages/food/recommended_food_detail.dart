@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_shop/data/controllers/cart_controller.dart';
 import 'package:flutter_food_shop/data/controllers/popular_product_controller.dart';
 import 'package:flutter_food_shop/data/controllers/recommended_product_controller.dart';
-import 'package:flutter_food_shop/pages/cart/cart_page.dart';
 import 'package:flutter_food_shop/routes/route_helper.dart';
 import 'package:flutter_food_shop/utils/app_constant.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
@@ -14,7 +13,9 @@ import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   final int pageId;
-  const RecommendedFoodDetail({super.key, required this.pageId});
+  final String page;
+
+  const RecommendedFoodDetail({super.key, required this.pageId, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,11 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteHelper.getInitial());
+                    if(page == 'cartPage'){
+                      Get.toNamed(RouteHelper.getCartPage());
+                    } else {
+                      Get.toNamed(RouteHelper.getInitial());
+                    }
                   },
                   child: AppIcon(icon: Icons.clear),
                 ),
