@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_shop/data/controllers/cart_controller.dart';
 import 'package:flutter_food_shop/data/controllers/popular_product_controller.dart';
 import 'package:flutter_food_shop/data/controllers/recommended_product_controller.dart';
-import 'package:flutter_food_shop/pages/home/main_food_page.dart';
 import 'package:flutter_food_shop/routes/route_helper.dart';
 import 'package:flutter_food_shop/utils/app_constant.dart';
 import 'package:flutter_food_shop/utils/colors.dart';
@@ -191,6 +190,69 @@ class CartPage extends StatelessWidget {
               ))
         ],
       ),
+      bottomNavigationBar: GetBuilder<CartController>(builder: (cartController){
+        return Container(
+        height: Dimensions.bottomHeightBar_120,
+        padding: EdgeInsets.only(
+            top: Dimensions.height_30,
+            bottom: Dimensions.height_30,
+            left: Dimensions.width_20,
+            right: Dimensions.width_20),
+        decoration: BoxDecoration(
+            color: AppColors.buttonBackgroundColor,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Dimensions.radius15 * 2),
+                topRight: Radius.circular(Dimensions.radius15 * 2))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.only(
+                  top: Dimensions.height15,
+                  bottom: Dimensions.height15,
+                  left: Dimensions.width_15,
+                  right: Dimensions.width_15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius15),
+                color: Colors.white,
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: Dimensions.width_10 / 2,
+                  ),
+                  // BigText(text: cartController.totalAmount.toString()),
+                  BigText(text: "\$ ${cartController.totalAmount}"),
+                  SizedBox(
+                    width: Dimensions.width_10 / 2,
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: (){
+                // popularProduct.addItem(product);
+              },
+              child: Container(
+                padding: EdgeInsets.only(
+                    top: Dimensions.height15,
+                    bottom: Dimensions.height15,
+                    left: Dimensions.width_15,
+                    right: Dimensions.width_15),
+                  child: BigText(
+                    text: "\$ | Add to cart",
+                    color: Colors.white,
+                  ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius15),
+                  color: AppColors.mainColor,
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+      },),
     );
   }
 }
