@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_shop/pages/home/main_food_page.dart';
-// import 'package:flutter_food_shop/utils/colors.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:flutter_food_shop/utils/colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +14,7 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
 
-  late PersistentTabController _controller;
+  // late PersistentTabController _controller;
 
   List pages=[
     MainFoodPage(),
@@ -42,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  /* @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
@@ -78,9 +77,9 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
- */
 
-  @override
+
+  /* @override
   void initState(){
     super.initState();
     _controller = PersistentTabController(initialIndex: 0);
@@ -166,5 +165,5 @@ class _HomePageState extends State<HomePage> {
         ),
         navBarStyle: NavBarStyle.style1, // Choose the nav bar style with this property.
     );
-  }
+  } */
 }
