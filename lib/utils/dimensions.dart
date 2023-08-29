@@ -45,6 +45,9 @@ class Dimensions {
   // pages popular_food_detail
   static double imgPopularFood_350 = screenWidth / 1.37;
 
+    // imagel
+  static double image_250 = screenWidth / 1.66;
+
   // bottom height
   static double bottomHeightBar_120 = screenHeight / 5.69;
 }
