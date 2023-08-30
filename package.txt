@@ -1,0 +1,6 @@
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.6.5
+  dots_indicator: ^2.1.2 (untuk dot swiper)
+  shared_preferences: ^2.0.11 (untuk local storage)

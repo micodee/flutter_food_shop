@@ -240,7 +240,7 @@ class CartPage extends StatelessWidget {
                     left: Dimensions.width_15,
                     right: Dimensions.width_15),
                   child: BigText(
-                    text: "\$ | Add to cart",
+                    text: "Checkout",
                     color: Colors.white,
                   ),
                 decoration: BoxDecoration(
